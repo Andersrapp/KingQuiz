@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.mr.poppa.kingquiz" >
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/krona"
+        android:label="@string/app_name"
+        android:theme="@style/AppTheme"
+        android:debuggable="true"
+        >
+        <activity
+            android:name=".MenuActivity"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait"
+            >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:noHistory="true"
+            android:name=".KingActivity"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait"
+            >
+
+        </activity>
+        <activity
+            android:noHistory="true"
+            android:name=".ReignActivity"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait"
+            >
+
+        </activity>
+    </application>
+
+</manifest>

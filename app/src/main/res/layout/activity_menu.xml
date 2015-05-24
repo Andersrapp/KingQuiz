@@ -1,0 +1,62 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MenuActivity">
+
+    <ImageView
+        android:id="@+id/menuBackground"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="fitXY"
+        android:src="@drawable/mainbg"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <LinearLayout
+        android:weightSum="46"
+        android:id="@+id/innerRelativeLayout"
+        android:layout_centerInParent="true"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="10dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/menuSpace"
+            android:layout_height="0dp"
+            android:layout_weight="22"
+            android:layout_width="match_parent" />
+
+        <Button
+            android:id="@+id/buttonKings"
+            android:layout_width="match_parent"
+            android:layout_weight="8"
+            android:layout_height="0dp"
+            android:textColor="#FFFFFF"
+            android:text="Kings"
+            android:textSize="20sp"
+            android:layout_below="@id/menuSpace"
+            android:background="@drawable/button_bg_stroke" />
+
+        <TextView
+            android:id="@+id/buttonSpace"
+            android:layout_weight="1"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_below="@id/buttonKings" />
+
+        <Button
+            android:id="@+id/buttonReign"
+            android:layout_weight="8"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:textColor="#FFFFFF"
+            android:text="Reign"
+            android:textSize="20sp"
+            android:layout_below="@id/buttonSpace"
+            android:background="@drawable/button_bg_stroke" />
+    </LinearLayout>
+
+</RelativeLayout>

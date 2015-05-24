@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">King Quiz</string>
+    <string name="exit_option">Exit</string>
+    <string name="king_reigned_text">Reigned:</string>
+    <string name="change_user">Change User</string>
+    <string name="king_name_text">King Name</string>
+    <string name="king_title_text">King:</string>
+    <string name="reigned_years_text">Year</string>
+</resources>

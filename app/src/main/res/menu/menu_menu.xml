@@ -1,0 +1,21 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".MenuActivity">
+
+    <item android:id="@+id/change_user"
+        android:title="@string/change_user"
+        android:orderInCategory="100"
+        app:showAsAction="ifRoom|withText"
+        />
+    <item android:id="@+id/exit_the_app"
+        android:title="@string/exit_option"
+        android:orderInCategory="90"
+        app:showAsAction="ifRoom|withText"
+        />
+    <item
+        android:id="@+id/menu_item_share"
+        android:title="Share"
+        app:showAsAction="ifRoom"
+        app:actionProviderClass= "android.support.v7.widget.ShareActionProvider" />
+</menu>

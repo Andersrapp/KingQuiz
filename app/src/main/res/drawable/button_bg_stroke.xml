@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item>
+
+
+<!--Swedish theme-->
+        <!--<shape android:shape="rectangle">-->
+
+            <!--<stroke android:width="2dp"-->
+                <!--android:color="@color/swedishYellow"/>-->
+
+            <!--<corners android:radius="7dp" />-->
+
+            <!--<solid-->
+                <!--android:color="@color/swedishBlue"-->
+                <!--/>-->
+
+        <!--</shape>-->
+
+
+
+
+<!--Brownish theme-->
+        <shape android:shape="rectangle">
+
+            <stroke android:width="2dp"
+                android:color="#2d251e"/>
+
+            <corners android:radius="7dp" />
+
+            <gradient
+                android:angle="270"
+                android:centerColor="#4e4032"
+                android:endColor="#322921"
+                android:startColor="#322921" />
+        </shape>
+    </item>
+</selector>
