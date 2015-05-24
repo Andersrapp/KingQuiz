@@ -18,6 +18,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.mr.poppa.kingquiz.serverapi.XMPPClient;
+
 import java.util.Random;
 
 /**
@@ -27,12 +29,13 @@ public class MenuActivity extends ActionBarActivity {
 
     private Button kingButton = null;
     private Button reignButton = null;
-    private SharedPreferences mSharedPreferences;
-    private static final String PREFS = "prefs";
-    private static final String PREF_NAME = "name";
-    private static final String PREF_KING_SCORE = "king_score";
-    private static final String PREF_REIGN_SCORE = "reign_score";
-    private ShareActionProvider mShareActionProvider;
+    private Button messageButton = null;
+//    private SharedPreferences mSharedPreferences;
+//    private static final String PREFS = "prefs";
+//    private static final String PREF_NAME = "name";
+//    private static final String PREF_KING_SCORE = "king_score";
+//    private static final String PREF_REIGN_SCORE = "reign_score";
+//    private ShareActionProvider mShareActionProvider;
     private ShakeDetector mShakeDetector;
     private SensorManager mSensorManager;
     private Sensor mAccelerometer;
@@ -44,6 +47,7 @@ public class MenuActivity extends ActionBarActivity {
 
         kingButton = (Button) findViewById(R.id.buttonKings);
         reignButton = (Button) findViewById(R.id.buttonReign);
+        messageButton = (Button) findViewById(R.id.buttonMessage);
 
         kingButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -57,6 +61,14 @@ public class MenuActivity extends ActionBarActivity {
             @Override
             public void onClick(View v) {
                 Intent i = new Intent(v.getContext(), ReignActivity.class);
+                startActivity(i);
+            }
+        });
+
+        messageButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(v.getContext(), XMPPClient.class);
                 startActivity(i);
             }
         });
@@ -84,66 +96,66 @@ public class MenuActivity extends ActionBarActivity {
             }
         });
 
-        displayWelcome();
+//        displayWelcome();
 
     }
 
-    public void displayWelcome() {
-        mSharedPreferences = getSharedPreferences(PREFS, MODE_PRIVATE);
+//    public void displayWelcome() {
+//        mSharedPreferences = getSharedPreferences(PREFS, MODE_PRIVATE);
+//
+//        String name = mSharedPreferences.getString(PREF_NAME, "");
+//        int kingHighScore = mSharedPreferences.getInt(PREF_KING_SCORE, 0);
+//        int reignHighScore = mSharedPreferences.getInt(PREF_REIGN_SCORE, 0);
+//
+//        if (name.length() > 0) {
+//            Toast.makeText(this, "Welcome back, " + name + "!", Toast.LENGTH_SHORT).show();
+//            Toast.makeText(this, "Your highest score on kings is " + kingHighScore
+//                    + "\r\n and your highest score on reign is " + reignHighScore + "!", Toast.LENGTH_SHORT).show();
+//        } else {
+//            setNewUser();
+//        }
+//    }
 
-        String name = mSharedPreferences.getString(PREF_NAME, "");
-        int kingHighScore = mSharedPreferences.getInt(PREF_KING_SCORE, 0);
-        int reignHighScore = mSharedPreferences.getInt(PREF_REIGN_SCORE, 0);
-
-        if (name.length() > 0) {
-            Toast.makeText(this, "Welcome back, " + name + "!", Toast.LENGTH_SHORT).show();
-            Toast.makeText(this, "Your highest score on kings is " + kingHighScore
-                    + "\r\n and your highest score on reign is " + reignHighScore + "!", Toast.LENGTH_SHORT).show();
-        } else {
-            setNewUser();
-        }
-    }
-
-    public void setNewUser() {
-        AlertDialog.Builder alert = new AlertDialog.Builder(this);
-        alert.setTitle("Hello!");
-        alert.setMessage("What is your name?");
-
-        final EditText input = new EditText(this);
-        alert.setView(input);
-
-        alert.setPositiveButton("OK", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int whichButton) {
-                String inputName = input.getText().toString();
-                SharedPreferences.Editor e = mSharedPreferences.edit();
-                if (inputName.equals("")) {
-                    inputName = "anonymous player";
-                }
-                e.putString(PREF_NAME, inputName);
-                e.commit();
-
-                Toast.makeText(getApplicationContext(), "Welcome, " + inputName + "!", Toast.LENGTH_SHORT).show();
-            }
-        });
-        alert.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                String name = mSharedPreferences.getString(PREF_NAME, "");
-
-                if (name != "") {
-                    Toast.makeText(getApplicationContext(), "Welcome, " + name + "!", Toast.LENGTH_SHORT).show();
-                } else {
-                    SharedPreferences.Editor e = mSharedPreferences.edit();
-                    String defaultName = "anonymous player";
-                    e.putString(PREF_NAME, defaultName );
-                    e.commit();
-                    Toast.makeText(getApplicationContext(), "Welcome, " + defaultName + "!", Toast.LENGTH_SHORT).show();
-                }
-            }
-        });
-        alert.show();
-    }
+//    public void setNewUser() {
+//        AlertDialog.Builder alert = new AlertDialog.Builder(this);
+//        alert.setTitle("Hello!");
+//        alert.setMessage("What is your name?");
+//
+//        final EditText input = new EditText(this);
+//        alert.setView(input);
+//
+//        alert.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+//            @Override
+//            public void onClick(DialogInterface dialog, int whichButton) {
+//                String inputName = input.getText().toString();
+//                SharedPreferences.Editor e = mSharedPreferences.edit();
+//                if (inputName.equals("")) {
+//                    inputName = "anonymous player";
+//                }
+//                e.putString(PREF_NAME, inputName);
+//                e.commit();
+//
+//                Toast.makeText(getApplicationContext(), "Welcome, " + inputName + "!", Toast.LENGTH_SHORT).show();
+//            }
+//        });
+//        alert.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+//            @Override
+//            public void onClick(DialogInterface dialog, int which) {
+//                String name = mSharedPreferences.getString(PREF_NAME, "");
+//
+//                if (name != "") {
+//                    Toast.makeText(getApplicationContext(), "Welcome, " + name + "!", Toast.LENGTH_SHORT).show();
+//                } else {
+//                    SharedPreferences.Editor e = mSharedPreferences.edit();
+//                    String defaultName = "anonymous player";
+//                    e.putString(PREF_NAME, defaultName );
+//                    e.commit();
+//                    Toast.makeText(getApplicationContext(), "Welcome, " + defaultName + "!", Toast.LENGTH_SHORT).show();
+//                }
+//            }
+//        });
+//        alert.show();
+//    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -160,40 +172,40 @@ public class MenuActivity extends ActionBarActivity {
             }
         });
 
-        changeUser.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
-            @Override
-            public boolean onMenuItemClick(MenuItem item) {
-                setNewUser();
-                return true;
-            }
-        });
+//        changeUser.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
+//            @Override
+//            public boolean onMenuItemClick(MenuItem item) {
+//                setNewUser();
+//                return true;
+//            }
+//        });
 
-        if (shareItem != null) {
-            mShareActionProvider = (ShareActionProvider) MenuItemCompat.getActionProvider(shareItem);
-        }
-        setShareIntent();
+//        if (shareItem != null) {
+//            mShareActionProvider = (ShareActionProvider) MenuItemCompat.getActionProvider(shareItem);
+//        }
+//        setShareIntent();
         return true;
     }
 
-    private void setShareIntent() {
-        mSharedPreferences = getSharedPreferences(PREFS, MODE_PRIVATE);
-
-        String name = mSharedPreferences.getString(PREF_NAME, "");
-        int kingHighScore = mSharedPreferences.getInt(PREF_KING_SCORE, 0);
-        int reignHighScore = mSharedPreferences.getInt(PREF_REIGN_SCORE, 0);
-        String message = name + " highest score on kings is " + kingHighScore
-                + "\r\n and on reign is " + reignHighScore + "!";
-
-        if (mShareActionProvider != null) {
-
-            Intent shareIntent = new Intent(Intent.ACTION_SEND);
-            shareIntent.setType("text/plain");
-            shareIntent.putExtra(Intent.EXTRA_SUBJECT, "High scores");
-            shareIntent.putExtra(Intent.EXTRA_TEXT, message);
-
-            mShareActionProvider.setShareIntent(shareIntent);
-        }
-    }
+//    private void setShareIntent() {
+//        mSharedPreferences = getSharedPreferences(PREFS, MODE_PRIVATE);
+//
+//        String name = mSharedPreferences.getString(PREF_NAME, "");
+//        int kingHighScore = mSharedPreferences.getInt(PREF_KING_SCORE, 0);
+//        int reignHighScore = mSharedPreferences.getInt(PREF_REIGN_SCORE, 0);
+//        String message = name + " highest score on kings is " + kingHighScore
+//                + "\r\n and on reign is " + reignHighScore + "!";
+//
+//        if (mShareActionProvider != null) {
+//
+//            Intent shareIntent = new Intent(Intent.ACTION_SEND);
+//            shareIntent.setType("text/plain");
+//            shareIntent.putExtra(Intent.EXTRA_SUBJECT, "High scores");
+//            shareIntent.putExtra(Intent.EXTRA_TEXT, message);
+//
+//            mShareActionProvider.setShareIntent(shareIntent);
+//        }
+//    }
 
     @Override
     protected void onResume() {

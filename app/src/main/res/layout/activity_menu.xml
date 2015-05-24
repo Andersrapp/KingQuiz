@@ -26,7 +26,7 @@
         <TextView
             android:id="@+id/menuSpace"
             android:layout_height="0dp"
-            android:layout_weight="22"
+            android:layout_weight="18"
             android:layout_width="match_parent" />
 
         <Button
@@ -37,15 +37,13 @@
             android:textColor="#FFFFFF"
             android:text="Kings"
             android:textSize="20sp"
-            android:layout_below="@id/menuSpace"
             android:background="@drawable/button_bg_stroke" />
 
         <TextView
-            android:id="@+id/buttonSpace"
             android:layout_weight="1"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_below="@id/buttonKings" />
+            />
 
         <Button
             android:id="@+id/buttonReign"
@@ -55,7 +53,22 @@
             android:textColor="#FFFFFF"
             android:text="Reign"
             android:textSize="20sp"
-            android:layout_below="@id/buttonSpace"
+            android:background="@drawable/button_bg_stroke" />
+
+        <TextView
+            android:layout_weight="1"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            />
+
+        <Button
+            android:id="@+id/buttonMessage"
+            android:layout_weight="8"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:textColor="#FFFFFF"
+            android:text="Message"
+            android:textSize="20sp"
             android:background="@drawable/button_bg_stroke" />
     </LinearLayout>
 
