@@ -34,7 +34,7 @@ public class SettingsDialog extends Dialog implements android.view.View.OnClickL
         Button ok = (Button) findViewById(R.id.ok);
         ok.setOnClickListener(this);
 
-        String host = "jabbim.com";
+        String host = "jabber.iitsp.com";
         int port = 5222;
 
         ConnectionConfiguration connConfig =
@@ -50,6 +50,8 @@ public class SettingsDialog extends Dialog implements android.view.View.OnClickL
             Log.e("XMPPClient", ex.toString());
             xmppClient.setConnection(null);
         }
+
+
     }
 
     public void onClick(View v) {
@@ -60,10 +62,11 @@ public class SettingsDialog extends Dialog implements android.view.View.OnClickL
 //        String password = getText(R.id.password);
 
         String service = "gmail.com";
-        String username = "mrpoppa@jabbim.com";
-        String password = "pa153461";
+        String username = "mrnoone";
+        String password = "123456";
 
         // Create a connection
+
 
 
         try {
