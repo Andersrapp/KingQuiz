@@ -35,11 +35,16 @@ public class SettingsDialog extends Dialog implements android.view.View.OnClickL
     }
 
     public void onClick(View v) {
-        String host = getText(R.id.host);
-        String port = getText(R.id.port);
-        String service = getText(R.id.service);
-        String username = getText(R.id.userid);
-        String password = getText(R.id.password);
+//        String host = getText(R.id.host);
+//        String port = getText(R.id.port);
+//        String service = getText(R.id.service);
+//        String username = getText(R.id.userid);
+//        String password = getText(R.id.password);
+        String host = "talk.google.com";
+        String port = "5222";
+        String service = "gmail.com";
+        String username = "MrPoppa";
+        String password = "pa153461";
 
         // Create a connection
         ConnectionConfiguration connConfig =
@@ -49,7 +54,7 @@ public class SettingsDialog extends Dialog implements android.view.View.OnClickL
         try {
             connection.connect();
             Log.i("XMPPClient", "[SettingsDialog] Connected to " + connection.getHost());
-        } catch (XMPPException ex) {
+        } catch (Exception ex) {
             Log.e("XMPPClient", "[SettingsDialog] Failed to connect to " + connection.getHost());
             Log.e("XMPPClient", ex.toString());
             xmppClient.setConnection(null);
