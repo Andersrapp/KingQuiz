@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.hardware.Sensor;
 import android.hardware.SensorManager;
+import android.os.Handler;
 import android.support.v4.view.MenuItemCompat;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
@@ -67,9 +68,14 @@ public class MenuActivity extends ActionBarActivity {
 
         messageButton.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
-                Intent i = new Intent(v.getContext(), XMPPClient.class);
-                startActivity(i);
+            public void onClick(final View v) {
+                new Handler().post(new Runnable() {
+                    @Override
+                    public void run() {
+                        Intent i = new Intent(v.getContext(), XMPPClient.class);
+                        startActivity(i);
+                    }
+                });
             }
         });
 

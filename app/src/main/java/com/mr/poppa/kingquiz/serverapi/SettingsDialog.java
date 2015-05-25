@@ -19,6 +19,7 @@ import org.jivesoftware.smack.packet.Presence;
  */
 public class SettingsDialog extends Dialog implements android.view.View.OnClickListener {
     private XMPPClient xmppClient;
+    private XMPPConnection connection;
 
     public SettingsDialog(XMPPClient xmppClient) {
         super(xmppClient);
@@ -32,24 +33,14 @@ public class SettingsDialog extends Dialog implements android.view.View.OnClickL
         setTitle("XMPP Settings");
         Button ok = (Button) findViewById(R.id.ok);
         ok.setOnClickListener(this);
-    }
 
-    public void onClick(View v) {
-//        String host = getText(R.id.host);
-//        String port = getText(R.id.port);
-//        String service = getText(R.id.service);
-//        String username = getText(R.id.userid);
-//        String password = getText(R.id.password);
-        String host = "talk.google.com";
-        String port = "5222";
-        String service = "gmail.com";
-        String username = "MrPoppa";
-        String password = "pa153461";
+        String host = "jabbim.com";
+        int port = 5222;
 
-        // Create a connection
         ConnectionConfiguration connConfig =
-                new ConnectionConfiguration(host, Integer.parseInt(port), service);
-        XMPPConnection connection = new XMPPConnection(connConfig);
+                new ConnectionConfiguration(host, port);
+        connection = new XMPPConnection(connConfig);
+
 
         try {
             connection.connect();
@@ -59,6 +50,22 @@ public class SettingsDialog extends Dialog implements android.view.View.OnClickL
             Log.e("XMPPClient", ex.toString());
             xmppClient.setConnection(null);
         }
+    }
+
+    public void onClick(View v) {
+//        String host = getText(R.id.host);
+//        String port = getText(R.id.port);
+//        String service = getText(R.id.service);
+//        String username = getText(R.id.userid);
+//        String password = getText(R.id.password);
+
+        String service = "gmail.com";
+        String username = "mrpoppa@jabbim.com";
+        String password = "pa153461";
+
+        // Create a connection
+
+
         try {
             connection.login(username, password);
             Log.i("XMPPClient", "Logged in as " + connection.getUser());
