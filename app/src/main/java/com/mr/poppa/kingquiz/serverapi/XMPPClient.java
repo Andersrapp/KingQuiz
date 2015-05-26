@@ -1,6 +1,7 @@
 package com.mr.poppa.kingquiz.serverapi;
 
 import android.app.Activity;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
@@ -9,6 +10,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import com.mr.poppa.kingquiz.R;
 
@@ -31,9 +33,15 @@ public class XMPPClient extends Activity {
     private Handler mHandler = new Handler();
     private SettingsDialog mDialog;
     private EditText mRecipient;
-    private EditText mSendText;
+    private TextView mSendText;
     private ListView mList;
     private XMPPConnection connection;
+
+    private SharedPreferences mSharedPreferences;
+    private static final String PREFS = "prefs";
+    private static final String PREF_NAME = "name";
+    private static final String PREF_KING_SCORE = "king_score";
+    private static final String PREF_REIGN_SCORE = "reign_score";
 
     /**
      * Called with the activity is first created.
@@ -44,9 +52,17 @@ public class XMPPClient extends Activity {
         Log.i("XMPPClient", "onCreate called");
         setContentView(R.layout.main);
 
+        mSharedPreferences = getSharedPreferences(PREFS, MODE_PRIVATE);
+
         mRecipient = (EditText) this.findViewById(R.id.recipient);
         Log.i("XMPPClient", "mRecipient = " + mRecipient);
-        mSendText = (EditText) this.findViewById(R.id.sendText);
+        mSendText = (TextView) this.findViewById(R.id.sendText);
+        String name = mSharedPreferences.getString(PREF_NAME, "");
+        int kingHighScore = mSharedPreferences.getInt(PREF_KING_SCORE, 0);
+        int reignHighScore = mSharedPreferences.getInt(PREF_REIGN_SCORE, 0);
+        String message = name + " highest score on kings is " + kingHighScore
+                + "\r\n and on reign is " + reignHighScore + "!";
+        mSendText.setText(message);
         Log.i("XMPPClient", "mSendText = " + mSendText);
         mList = (ListView) this.findViewById(R.id.listMessages);
         Log.i("XMPPClient", "mList = " + mList);
@@ -71,7 +87,7 @@ public class XMPPClient extends Activity {
         Button send = (Button) this.findViewById(R.id.send);
         send.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
-                String to = mRecipient.getText().toString();
+                String to = mRecipient.getText().toString() + "@jabber.iitsp.com/Smack";
                 String text = mSendText.getText().toString();
 
                 Log.i("XMPPClient", "Sending text [" + text + "] to [" + to + "]");

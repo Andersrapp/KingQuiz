@@ -58,12 +58,12 @@ public class SettingsDialog extends Dialog implements android.view.View.OnClickL
 //        String host = getText(R.id.host);
 //        String port = getText(R.id.port);
 //        String service = getText(R.id.service);
-//        String username = getText(R.id.userid);
-//        String password = getText(R.id.password);
+        String username = getText(R.id.userid);
+        String password = getText(R.id.password);
 
-        String service = "gmail.com";
-        String username = "mrnoone";
-        String password = "123456";
+//        String service = "gmail.com";
+//        String username = "mrnoone";
+//        String password = "123456";
 
         // Create a connection
 

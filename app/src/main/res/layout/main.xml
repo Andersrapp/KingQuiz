@@ -36,13 +36,11 @@
               android:layout_weight="1"
               android:scrollbars="horizontal"
             />
-    <EditText android:id="@+id/sendText"
+    <TextView android:id="@+id/sendText"
               android:layout_width="fill_parent"
               android:layout_height="wrap_content"
               android:singleLine="true"
               android:textSize="16sp"
-              android:autoText="false"
-              android:capitalize="none"
               android:scrollHorizontally="true"/>
     <Button android:id="@+id/send"
             android:layout_width="fill_parent"
