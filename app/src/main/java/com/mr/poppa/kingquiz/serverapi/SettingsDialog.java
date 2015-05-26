@@ -42,15 +42,14 @@ public class SettingsDialog extends Dialog implements android.view.View.OnClickL
         connection = new XMPPConnection(connConfig);
 
 
-        try {
-            connection.connect();
-            Log.i("XMPPClient", "[SettingsDialog] Connected to " + connection.getHost());
-        } catch (Exception ex) {
-            Log.e("XMPPClient", "[SettingsDialog] Failed to connect to " + connection.getHost());
-            Log.e("XMPPClient", ex.toString());
-            xmppClient.setConnection(null);
-        }
-
+            try {
+                connection.connect();
+                Log.i("XMPPClient", "[SettingsDialog] Connected to " + connection.getHost());
+            } catch (Exception ex) {
+                Log.e("XMPPClient", "[SettingsDialog] Failed to connect to " + connection.getHost());
+                Log.e("XMPPClient", ex.toString());
+                xmppClient.setConnection(null);
+            }
 
     }
 
@@ -66,8 +65,6 @@ public class SettingsDialog extends Dialog implements android.view.View.OnClickL
 //        String password = "123456";
 
         // Create a connection
-
-
 
         try {
             connection.login(username, password);
